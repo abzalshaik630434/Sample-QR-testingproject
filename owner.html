@@ -4,38 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Owner Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <h2>Owner</h2>
-      <nav>
-        <ul>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">My Restaurant</a></li>
-          <li><a href="#">Menu Items</a></li>
-          <li><a href="#">Orders</a></li>
-          <li><a href="../index.html">Logout</a></li>
-        </ul>
-      </nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="superadmin.html">Super Admin</a></li>
+        <li><a href="cofounder.html">Cofounder</a></li>
+        <li><a href="customer.html">Customer</a></li>
+      </ul>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
       <header>
-        <h1>Welcome, Sathvika</h1>
-        <p>Manage your restaurant, menu items, and view incoming orders.</p>
+        <h1>Owner Dashboard</h1>
+        <p>Overview and management</p>
       </header>
 
       <section class="stats">
-        <div class="card">My Restaurants <span>1</span></div>
-        <div class="card">Menu Items <span>12</span></div>
-        <div class="card">Active Orders <span>8</span></div>
-        <div class="card">Payments Today <span>₹2,750</span></div>
+        <div class="card">
+          Sales
+          <span>800</span>
+        </div>
+        <div class="card">
+          Revenue
+          <span>$40,000</span>
+        </div>
+        <div class="card">
+          Inventory
+          <span>320</span>
+        </div>
       </section>
     </main>
   </div>
 </body>
 </html>
+
