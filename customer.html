@@ -3,99 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Menu</title>
-  <link rel="stylesheet" href="dashboard.css">
+  <title>Customer Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <h2>Customer</h2>
-      <nav>
-        <ul>
-          <li><a href="#">Menu</a></li>
-          <li><a href="#">My Orders</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="../index.html">Logout</a></li>
-        </ul>
-      </nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="superadmin.html">Super Admin</a></li>
+        <li><a href="cofounder.html">Cofounder</a></li>
+        <li><a href="owner.html">Owner</a></li>
+      </ul>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
       <header>
-        <h1>Welcome, Customer</h1>
-        <p>Browse the menu and order your favorite dishes.</p>
+        <h1>Customer Dashboard</h1>
+        <p>View your orders and menu</p>
       </header>
 
-      <section class="menu-items">
-        <h2>Available Dishes</h2>
-        <div class="cards">
-          <div class="card pizza">
-            <div class="price">₹250</div>
-            <div class="name">Pizza Margherita</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <div class="card paneer">
-            <div class="price">₹180</div>
-            <div class="name">Paneer Butter Masala</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <div class="card biryani">
-            <div class="price">₹200</div>
-            <div class="name">Veg Biryani</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
-          <div class="card brownie">
-            <div class="price">₹120</div>
-            <div class="name">Chocolate Brownie</div>
-            <button class="add-to-cart">Add to Cart</button>
-          </div>
+      <section class="cards">
+        <div class="card menu-card pizza">
+          <div class="price">$10</div>
+          <div class="name">Pizza Margherita</div>
+        </div>
+        <div class="card menu-card paneer">
+          <div class="price">$8</div>
+          <div class="name">Paneer Butter Masala</div>
+        </div>
+        <div class="card menu-card biryani">
+          <div class="price">$12</div>
+          <div class="name">Veg Biryani</div>
+        </div>
+        <div class="card menu-card brownie">
+          <div class="price">$5</div>
+          <div class="name">Chocolate Brownie</div>
         </div>
       </section>
     </main>
-
-    <!-- Cart Panel -->
-    <aside class="cart-panel">
-      <h2>Cart</h2>
-      <div class="cart-items">
-        <!-- Cart items will appear here dynamically -->
-      </div>
-      <div class="cart-total">
-        Total: <span>₹0</span>
-      </div>
-      <button class="checkout-btn">Checkout</button>
-    </aside>
   </div>
-
-  <script>
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartItemsContainer = document.querySelector('.cart-items');
-    const cartTotal = document.querySelector('.cart-total span');
-    let total = 0;
-
-    addToCartButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const card = button.parentElement;
-        const name = card.querySelector('.name').innerText;
-        const price = parseInt(card.querySelector('.price').innerText.replace('₹',''));
-        total += price;
-
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('cart-item');
-        cartItem.innerHTML = `<span class="item-name">${name}</span>
-                              <span class="item-price">₹${price}</span>
-                              <span class="remove">✖</span>`;
-        cartItemsContainer.appendChild(cartItem);
-        cartTotal.innerText = `₹${total}`;
-
-        cartItem.querySelector('.remove').addEventListener('click', () => {
-          total -= price;
-          cartItem.remove();
-          cartTotal.innerText = `₹${total}`;
-        });
-      });
-    });
-  </script>
 </body>
 </html>
+
