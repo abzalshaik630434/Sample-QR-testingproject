@@ -18,37 +18,38 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const role = urlParams.get('role');
+    // Read role from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get('role');
 
-      // Auto-redirect customer
-      if(role === "customer") {
-        window.location.href = "customer/menu.html";
+    // If role is customer, redirect immediately
+    if(role === "customer") {
+      window.location.href = "customer.html";
+    }
+
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Dummy credentials
+      const credentials = {
+        superadmin: {username: "Abzal630434", password: "9177396304@Ali"},
+        cofounder: {username: "Suhana630340", password: "Chintu@630340"},
+        owner: {username: "Owner", password: "Owner@123"}
+      };
+
+      // Check credentials
+      if(role && credentials[role] && username === credentials[role].username && password === credentials[role].password){
+        if(role === "superadmin") window.location.href = "superadmin.html";
+        if(role === "cofounder") window.location.href = "cofounder.html";
+        if(role === "owner") window.location.href = "owner.html";
+      } else {
+        document.getElementById("error").innerText = "Invalid username or password!";
       }
-
-      const loginForm = document.getElementById("loginForm");
-      loginForm.addEventListener("submit", function(e){
-        e.preventDefault();
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        const credentials = {
-          superadmin: {username: "Abzal630434", password: "9177396304@Ali"},
-          cofounder: {username: "Suhana630340", password: "Chintu@630340"},
-          owner: {username: "Owner", password: "Owner@123"}
-        };
-
-        if(role && credentials[role] && username === credentials[role].username && password === credentials[role].password){
-          if(role === "superadmin") window.location.href = "superadmin/dashboard.html";
-          if(role === "cofounder") window.location.href = "cofounder/dashboard.html";
-          if(role === "owner") window.location.href = "owner/dashboard.html";
-        } else {
-          document.getElementById("error").innerText = "Invalid username or password!";
-        }
-      });
     });
   </script>
 </body>
 </html>
-
