@@ -181,11 +181,12 @@ header p {
   color: #ffa500;
 }
 
-.card:hover {
+.card:not(.menu-card):hover {
   transform: translateY(-5px);
   background: #ffa500;
   color: #111;
 }
+
 
 .card:hover span {
   color: #111;
