@@ -6,95 +6,165 @@
   font-family: Arial, sans-serif;
 }
 
-/* ===================== Generic Pages (Index/Login) ===================== */
+/* ===================== Generic Pages (Body) ===================== */
 body, html {
-  background: #1a1a1a;
+  background: #1a1a1a; /* dark theme */
   color: #fff;
+  min-height: 100vh;
 }
 
-/* Header & Footer */
-header, footer {
+/* ===================== Header ===================== */
+header {
   text-align: center;
-  padding: 1rem;
+  padding: 30px 20px;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 header p {
-  color: #ccc;
+  font-size: 1.2rem;
+  color: #fff;
 }
 
-/* Role Selection Cards */
+/* ===================== Role Cards (Home Page) ===================== */
 .role-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
-  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 50px auto;
+  max-width: 1000px;
 }
 
 .role-card {
-  display: inline-block;
-  width: 200px;
+  width: 180px;
   height: 120px;
-  margin: 10px;
-  text-align: center;
-  line-height: 120px;
-  font-size: 20px;
-  color: white;
-  background-image: url("your-image.jpg");
-  background-size: cover;
-  background-position: center;
+  background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 15px;
+  text-decoration: none;
+  cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,165,0,0.5), rgba(255,69,0,0.5));
+  top: 100%;
+  left: 0;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+
+.role-card:hover::before {
+  top: 0;
 }
 
 .role-card:hover {
-  transform: translateY(-5px);
-  background-color: rgba(255, 165, 0, 0.5); /* semi-transparent overlay */
-  color: #111;
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(255,165,0,0.3);
 }
 
+.role-card span {
+  position: relative;
+  z-index: 1;
+}
 
-/* Login Page */
-.login-form {
-  max-width: 400px;
-  margin: 3rem auto;
+/* ===================== Footer ===================== */
+footer {
+  text-align: center;
+  padding: 20px;
   background: #222;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  color: #aaa;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-size: 0.9rem;
 }
 
-.login-form h2 {
-  color: #ffa500;
-  margin-bottom: 1.5rem;
+/* ===================== Login Page ===================== */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* full screen minus header/footer */
+}
+
+.login-form-wrapper {
+  background: #222;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  width: 100%;
+  max-width: 400px;
   text-align: center;
 }
 
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 8px;
+.login-container h2 {
+  color: #ffa500;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
-.login-form button {
+.login-container input[type="text"],
+.login-container input[type="password"] {
   width: 100%;
   padding: 0.8rem;
-  background: #ffa500;
+  margin-bottom: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  background: #333;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+  background: #444;
+  box-shadow: 0 0 5px #ffa500;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
   border: none;
   border-radius: 8px;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
+  color: #111;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.login-form button:hover {
-  background: #ffb040;
+.login-container button:hover {
+  background: linear-gradient(90deg, #feb47b, #ff7e5f);
+  transform: translateY(-2px);
+}
+
+/* Error message */
+#error {
+  color: #ff4500;
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 /* ===================== Dashboard Pages ===================== */
@@ -192,7 +262,6 @@ header p {
   color: #111;
 }
 
-
 .card:hover span {
   color: #111;
 }
@@ -225,7 +294,7 @@ header p {
   overflow: hidden;
 }
 
-/* Overlay for hover effect */
+/* Hover overlay for menu cards */
 .card.menu-card::after {
   content: '';
   position: absolute;
@@ -233,22 +302,15 @@ header p {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  background: rgba(255, 165, 0, 0); /* default transparent */
+  background: rgba(255, 165, 0, 0);
   transition: background 0.3s ease;
   z-index: 1;
 }
 
-/* Hover effect */
-.card.menu-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.7);
-}
-
 .card.menu-card:hover::after {
-  background: rgba(255, 165, 0, 0.3); /* subtle orange overlay */
+  background: rgba(255, 165, 0, 0.3);
 }
 
-/* Price and Name */
 .card.menu-card .price,
 .card.menu-card .name {
   position: relative;
@@ -274,122 +336,5 @@ header p {
 .pizza { background-image: url("PizzaMargherita.jpeg"); }
 .paneer { background-image: url("PaneerButterMasala.jpeg"); }
 .biryani { background-image: url("VegBiryani.jpeg"); }
-.brownie { background-image: url("ChocolateBrownie.jpeg"); }
+.brownie { background
 
-/* Cart Panel */
-.cart-panel {
-  width: 300px;
-  background: #000;
-  color: #fff;
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-.cart-panel h2 {
-  color: #ffa500;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-bottom: 1px solid #ffa500;
-}
-
-.cart-item .remove {
-  cursor: pointer;
-  color: #ff4500;
-}
-
-.cart-total {
-  margin-top: 1rem;
-  font-weight: bold;
-  color: #ffa500;
-  text-align: center;
-}
-
-.checkout-btn {
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 1rem;
-  background: #ffa500;
-  color: #000;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.checkout-btn:hover {
-  background: #ffb040;
-}
-
-/* ===================== Responsive Design ===================== */
-@media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-    overflow-x: auto;
-  }
-
-  .sidebar h2 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .sidebar ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-  }
-
-  .sidebar li {
-    margin: 0;
-    flex: 1 1 40%;
-  }
-
-  .sidebar a {
-    text-align: center;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .main-content {
-    padding: 1rem;
-  }
-
-  .stats {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
-  }
-
-  .card,
-  .card.menu-card {
-    width: 100%;
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
-  header h1 {
-    font-size: 1.5rem;
-  }
-
-  header p {
-    font-size: 0.9rem;
-  }
-
-  .cart-panel {
-    width: 100%;
-    margin-top: 1rem;
-  }
-}
