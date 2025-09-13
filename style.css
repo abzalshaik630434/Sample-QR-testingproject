@@ -1,0 +1,287 @@
+/* ===================== Reset ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===================== Dashboard Container ===================== */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: #1a1a1a; /* Dark background */
+  font-family: Arial, sans-serif;
+}
+
+/* ===================== Sidebar ===================== */
+.sidebar {
+  width: 220px;
+  background: #111; /* Dark sidebar */
+  color: #ffa500;   /* Orange text */
+  padding: 2rem 1rem;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 1rem 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #ffa500;
+  font-weight: bold;
+  display: block;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: #ffa500;
+  color: #111;
+}
+
+/* ===================== Main Content ===================== */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  color: #fff;
+}
+
+/* Header */
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+/* ===================== Stats / Cards ===================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #222; /* Dark card */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.card span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  color: #ffa500;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #ffa500;
+  color: #111;
+}
+
+.card:hover span {
+  color: #111;
+}
+
+/* ===================== Menu / Dish Cards ===================== */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card.menu-card {
+  width: 220px;
+  height: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.card.menu-card .price {
+  background: rgba(0,0,0,0.6);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-bottom: auto;
+  color: #ffa500;
+}
+
+.card.menu-card .name {
+  background: rgba(0,0,0,0.6);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.card.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+  background-color: #ffa500;
+}
+
+.card.menu-card:hover .price,
+.card.menu-card:hover .name {
+  color: #111;
+}
+
+/* ===================== Dish Images ===================== */
+.pizza { background-image: url("PizzaMargherita.jpeg"); }
+.paneer { background-image: url("PaneerButterMasala.jpeg"); }
+.biryani { background-image: url("VegBiryani.jpeg"); }
+.brownie { background-image: url("ChocolateBrownie.jpeg"); }
+
+/* ===================== Cart Panel ===================== */
+.cart-panel {
+  width: 300px;
+  background: #000;
+  color: #fff;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.cart-panel h2 {
+  color: #ffa500;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ffa500;
+}
+
+.cart-item .remove {
+  cursor: pointer;
+  color: #ff4500;
+}
+
+.cart-total {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #ffa500;
+  text-align: center;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 1rem;
+  background: #ffa500;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.checkout-btn:hover {
+  background: #ffb040;
+}
+
+/* ===================== Responsive Design ===================== */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .sidebar h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .sidebar li {
+    margin: 0;
+    flex: 1 1 40%; /* Each link takes 40% of width */
+  }
+
+  .sidebar a {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .stats {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .card,
+  .card.menu-card {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  .cart-panel {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username"><br><br>
+      <input type="password" id="password" placeholder="Password" required><br><br>
+      <button type="submit">Login</button>
+    </form>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <script>
+    // Get role from URL query
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get('role');
+
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Dummy credentials for testing
+      const credentials = {
+        superadmin: {username: "Abzal630434", password: "9177396304@Ali"},
+        cofounder: {username: "Suhana630340", password: "Chintu@630340"},
+        owner: {username: "Owner", password: "Owner@123"}
+      };
+
+      // Redirect based on role
+      if(credentials[role] && username === credentials[role].username && password === credentials[role].password){
+        if(role === "superadmin") window.location.href = "superadmin/dashboard.html";
+        if(role === "cofounder") window.location.href = "cofounder/dashboard.html";
+        if(role === "owner") window.location.href = "owner/dashboard.html";
+      } else {
+        document.getElementById("error").innerText = "Invalid username or password!";
+      }
+    });
+
+    // If role is customer, open menu directly
+    if(role === "customer"){
+      window.location.href = "customer/menu.html";
+    }
+  </script>
+</body>
+</html>
