@@ -191,7 +191,7 @@ header p {
   color: #111;
 }
 
-/* Menu / Dish Cards */
+/* ===================== Menu / Dish Cards ===================== */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -211,40 +211,57 @@ header p {
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, border 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
   background-size: cover;
   background-position: center;
   position: relative;
   border: 2px solid transparent;
+  overflow: hidden;
 }
 
-.card.menu-card .price {
+/* Overlay for hover effect */
+.card.menu-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: rgba(255, 165, 0, 0); /* default transparent */
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+/* Hover effect */
+.card.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+}
+
+.card.menu-card:hover::after {
+  background: rgba(255, 165, 0, 0.3); /* subtle orange overlay */
+}
+
+/* Price and Name */
+.card.menu-card .price,
+.card.menu-card .name {
+  position: relative;
+  z-index: 2;
   background: rgba(0,0,0,0.6);
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
+}
+
+.card.menu-card .price {
   align-self: flex-start;
   margin-bottom: auto;
   color: #ffa500;
 }
 
 .card.menu-card .name {
-  background: rgba(0,0,0,0.6);
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
   margin-top: 0.5rem;
   text-align: center;
   color: #fff;
-}
-
-.card.menu-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.7);
-  background-color: #ffa500;
-}
-
-.card.menu-card:hover .price,
-.card.menu-card:hover .name {
-  color: #111;
 }
 
 /* Dish Images */
@@ -370,5 +387,3 @@ header p {
     margin-top: 1rem;
   }
 }
-
-
